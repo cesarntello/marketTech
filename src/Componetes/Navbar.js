@@ -13,7 +13,7 @@ const Navbar = () => {
     <>
             <Nav>
                 <NavLink to='/'>
-                    <h1>Logo</h1>
+                    <h1 className="Logo">techMarket</h1>
                 </NavLink>
                 <Bars/>
                 <NavMenu>
@@ -21,12 +21,12 @@ const Navbar = () => {
                         Componetes
                     </NavLink>
                     
-                    <NavLink to="/Componentes" activeStyle>
-                        Componetes
+                    <NavLink to="/Perifericos" activeStyle>
+                        Periféricos
                     </NavLink>
                     
-                    <NavLink to="/Componentes" activeStyle>
-                        Componetes
+                    <NavLink to="/Quienes" activeStyle>
+                        Quienes somos
                     </NavLink>
                 </NavMenu>
                 <NavBtn>
