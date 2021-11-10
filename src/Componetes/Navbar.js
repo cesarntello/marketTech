@@ -7,6 +7,7 @@ import {
     NavBtn,
     NavBtnLink,
 } from './NavbarElemets'
+import CartWidget from './CartWidget';
 
 const Navbar = () => {
     return (
@@ -34,6 +35,7 @@ const Navbar = () => {
                     Sign in
                     </NavBtnLink>
                 </NavBtn>
+                <CartWidget/>
             </Nav>
     </>
     );
