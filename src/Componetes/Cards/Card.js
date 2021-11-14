@@ -10,13 +10,13 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import ItemCount from '../ItemCount';
-import { cardsProduct } from '../../productsData';
+
 
 
 
 
   
-  export default function ProductCard({product :{id, nombre, categoria, precio, img, stock}}) {
+  export default function ProductCard() {
    
     return (
       <Card sx={{ maxWidth: 345 }}>
