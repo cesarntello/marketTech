@@ -9,8 +9,8 @@ import ItemListContainer from './Componetes/ItemListContainer/ItemListContainer'
 function App() {
   return (
     <Router>
-     <Navbar></Navbar>
-    <ItemListContainer></ItemListContainer>
+     <Navbar/>
+         <ItemListContainer/>
     </Router>
   );
 }

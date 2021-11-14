@@ -1,3 +1,13 @@
 .Logo {
   font-family: "Source Code Pro", monospace;
 }
+.itemList {
+  padding: 50px;
+}
+.cartW {
+  margin-top: 27px;
+}
+.countText {
+  margin-left: 12px;
+  margin-right: 12px;
+}
