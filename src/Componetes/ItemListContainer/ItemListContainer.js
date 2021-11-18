@@ -1,12 +1,17 @@
 import React from 'react'
-import ProductCard from '../Cards/Card'
 
-
+import ItemList from '../Cards/ItemList'
 
 const ItemListContainer = () => {
+
+   
+  
     return (
         <div className="itemList">
-            <ProductCard/>
+       
+
+       <ItemList className="productCard" />
+            
         </div>
     )
 }

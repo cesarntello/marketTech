@@ -8,7 +8,6 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import ItemCount from '../ItemCount';
 
 
@@ -16,29 +15,27 @@ import ItemCount from '../ItemCount';
 
 
   
-  export default function ProductCard() {
-   
+  export default function ProductCard({product :{id, nombre, categoria, precio, img, stock}}) {
+  console.log()
     return (
       <Card sx={{ maxWidth: 345 }}>
         <CardHeader
         
-          action={
-            <IconButton aria-label="settings">
-              <MoreVertIcon />
-            </IconButton>
-          }
-          title="Teclado Hyperx Alloy FPS Pro"
-          subheader=""
+          
+          title={nombre}
+          subheader={"$" + precio}
         />
         <CardMedia
           component="img"
           height="194"
-          image="../img/teclado"
+          image={img}
           alt=""
         />
         <CardContent>
-          <Typography variant="body2" color="text.secondary">
-          $14000
+          <Typography title="Shrimp and Chorizo Paella" variant="body2" color="text.secondary">
+          <CardHeader
+          title={"$" + precio}
+          />  
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
@@ -55,3 +52,4 @@ import ItemCount from '../ItemCount';
       </Card>
     );
   }
+  console.log(CardHeader)
