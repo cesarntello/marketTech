@@ -16,7 +16,7 @@ import ItemCount from '../ItemCount';
 
   
   export default function ProductCard({product :{id, nombre, categoria, precio, img, stock}}) {
-  console.log()
+  
     return (
       <Card sx={{ maxWidth: 345 }}>
         <CardHeader
@@ -27,7 +27,7 @@ import ItemCount from '../ItemCount';
         />
         <CardMedia
           component="img"
-          height="194"
+          height="300"
           image={img}
           alt=""
         />
