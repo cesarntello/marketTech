@@ -3,6 +3,7 @@ import { cardsProduct } from './items'
 import ItemDetail from './ItemDetail'
 // import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
+import { useParams } from 'react-router-dom';
 
 
 
@@ -11,23 +12,27 @@ import Container from '@mui/material/Container';
 
 const ItemDetailContainer = () => {
 
+
 const [producto, setProducto] =  useState({})
+const {itemId} = useParams()
+console.log(itemId)
 
 useEffect(() => {
     const getProduct = new Promise ((res) => {
         setTimeout (() => {
-            res (cardsProduct[0])
-        }, 2000)
+            res(cardsProduct)
+        }, 1000)
 
 
     }) 
 
 getProduct.then((result) => {
-    setProducto(result);
+    itemId && setProducto(result.find((item) => item.id === itemId)) 
+    
 })
 
     
-}, [])
+}, [itemId]);
 
 
 
@@ -38,7 +43,7 @@ getProduct.then((result) => {
         <div>
         <Container className="containerDetail" maxWidth="lg">
         {/* <Grid container spacing={2}> */}
-            <ItemDetail {...producto} product={producto} />
+            <ItemDetail {...producto}/>
         </Container>    
         {/* </Grid> */}
         </div>

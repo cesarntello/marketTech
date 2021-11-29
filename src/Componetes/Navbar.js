@@ -9,26 +9,49 @@ import {
 } from './NavbarElemets'
 import CartWidget from './CartWidget';
 
+
+
+
 const Navbar = () => {
+
+const categorias = [
+{id:'123', address: '/', text:'Home'},
+{id:'456', address:'categoria/Componentes', text:'Componentes'},
+{id:'789', address: 'categoria/Perifericos', text:'Periféricos'}
+
+]
+
     return (
     <>
+    
             <Nav>
                 <NavLink to='/'>
                     <h1 className="Logo">techMarket</h1>
                 </NavLink>
                 <Bars/>
                 <NavMenu>
-                    <NavLink to="/Componentes" activeStyle>
-                        Componetes
+                
+                    {categorias.map((cat) =>{
+                        return(
+
+                            <NavLink to={cat.address}  key={cat.id} >
+                        {cat.text}
+                    </NavLink>
+                        );
+                    
+                    })},
+                    
+                    {/* <NavLink to="/Componentes" activeStyle key={cat.id}>
+                        {cat.text}
                     </NavLink>
                     
-                    <NavLink to="/Perifericos" activeStyle>
+                    <NavLink to="/Perifericos" activeStyle key={cat.id}>
                         Periféricos
                     </NavLink>
                     
                     <NavLink to="/Quienes" activeStyle>
                         Quienes somos
-                    </NavLink>
+                    </NavLink> */}
                 </NavMenu>
                 <NavBtn>
                     <NavBtnLink to="/signin">
@@ -37,6 +60,7 @@ const Navbar = () => {
                 </NavBtn>
                 <CartWidget/>
             </Nav>
+        
     </>
     );
 }

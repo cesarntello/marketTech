@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ItemCount from '../ItemCount';
-
+import { Link } from 'react-router-dom';
 
 
 
@@ -18,6 +18,7 @@ import ItemCount from '../ItemCount';
   export default function ProductCard({product :{id, nombre, categoria, precio, img, stock}}) {
   
     return (
+      <Link to={`/producto/${id}`}>
       <Card sx={{ maxWidth: 345 }}>
         <CardHeader
         
@@ -50,6 +51,7 @@ import ItemCount from '../ItemCount';
         </CardActions>
        
       </Card>
+      </Link>
     );
   }
   console.log(CardHeader)
