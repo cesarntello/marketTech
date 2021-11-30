@@ -1,15 +1,16 @@
 import {Fragment, useState }from 'react'
 import { Button } from '@mui/material'
+// import CartWidget from './CartWidget'
 
-const stockProduct = 10
 
-const ItemCount = ({stock, initial, onAdd}) => {
+
+const ItemCount = ({stock, onAdd}) => {
 
     const  [count, setCount] = useState(0)
 
     const incrementar = () =>{
-        setCount(count + 1)
-        if( count >= stockProduct){ setCount (count + 0)}
+        count !== stock && setCount(count + 1)
+        if( count >= stock){ setCount (count + 0)}
     } 
     const decrementar = () =>{
         
@@ -17,12 +18,17 @@ const ItemCount = ({stock, initial, onAdd}) => {
         if( count <= 0 ){ setCount (count - 0)}
     } 
 
+
     return (
         <Fragment>
 
             <Button  variant="outlined" onClick={incrementar}>+</Button>
             <h3 className="countText">{`${count}`}</h3>
-            <Button  variant="outlined" onClick={decrementar}>-</Button>
+            <Button  variant="outlined" onClick={decrementar} count={count}>-</Button> 
+            <br/>
+            <br/>
+            <Button  variant="contained" onClick={() => onAdd (count)} disabled={count === 0}>Agregar al carrito  </Button>
+            
         </Fragment>
     )
 }

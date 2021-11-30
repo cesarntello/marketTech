@@ -24,3 +24,9 @@
   border-radius: 10px;
   margin: 20px;
 }
+.cardItem {
+  text-decoration: none;
+}
+.contador {
+  color: aliceblue;
+}

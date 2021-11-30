@@ -8,6 +8,7 @@ import {
     NavBtnLink,
 } from './NavbarElemets'
 import CartWidget from './CartWidget';
+import { Link } from 'react-router-dom';
 
 
 
@@ -17,7 +18,7 @@ const Navbar = () => {
 const categorias = [
 {id:'123', address: '/', text:'Home'},
 {id:'456', address:'categoria/Componentes', text:'Componentes'},
-{id:'789', address: 'categoria/Perifericos', text:'Periféricos'}
+{id:'789', address: 'categoria/Perifericos', text:'Perifericos'}
 
 ]
 
@@ -58,7 +59,10 @@ const categorias = [
                     Sign in
                     </NavBtnLink>
                 </NavBtn>
-                <CartWidget/>
+                <Link to="/cart">
+                
+                    <CartWidget/>
+                </Link>
             </Nav>
         
     </>

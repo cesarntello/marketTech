@@ -15,6 +15,7 @@ const ItemDetailContainer = () => {
 
 const [producto, setProducto] =  useState({})
 const {itemId} = useParams()
+const [finalizar, setFinalizar] = useState (false);
 console.log(itemId)
 
 useEffect(() => {
@@ -28,13 +29,16 @@ useEffect(() => {
 
 getProduct.then((result) => {
     itemId && setProducto(result.find((item) => item.id === itemId)) 
-    
+    console.log()
 })
 
     
 }, [itemId]);
 
-
+const onAdd = (carrito) => {
+    console.log({...producto , quantity: carrito})
+    setFinalizar(true);
+}    
 
 
 
@@ -43,7 +47,7 @@ getProduct.then((result) => {
         <div>
         <Container className="containerDetail" maxWidth="lg">
         {/* <Grid container spacing={2}> */}
-            <ItemDetail {...producto}/>
+            <ItemDetail {...producto} onAdd={onAdd} finalziar={finalizar}/>
         </Container>    
         {/* </Grid> */}
         </div>

@@ -1,4 +1,7 @@
+import { Link } from 'react-router-dom'
 import React from 'react'
+import ItemCount from '../ItemCount'
+import { Button } from '@mui/material'
 // import Grid from '@mui/material/Grid';
 // import ImageListItem from '@mui/material/CardMedia';
 
@@ -6,20 +9,31 @@ import React from 'react'
 
 
 
-
- const ItemDetail = ({id, nombre, categoria, precio, img, stock, detalle}) => {
-
+ const ItemDetail = ({id, nombre, categoria, precio, img, stock, detalle, onAdd, finalizar}) => {
 
 
-console.log(categoria)
+
+console.log(nombre)
 
     return (
+      <>
         <div>
 <img scr={img} alt={`${id}-${nombre}`} className="imgDetail" />
 <section className="sectionDetail">
 <h1>{nombre}</h1>
 <p>{detalle}</p>
 <h3>{precio}</h3>
+<div>{finalizar ? (
+              <>
+                  <Link to="/cart">terminar compra</Link>
+              </>
+              ) : (
+              <> 
+                  <ItemCount stock={stock} onAdd={onAdd}/>
+              </>
+              )}
+</div>
+
 </section>
 
 
@@ -41,6 +55,7 @@ console.log(categoria)
             </Grid> 
         </Grid> */}
         </div>
+        </>
     )
 }
 

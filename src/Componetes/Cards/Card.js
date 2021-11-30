@@ -18,8 +18,11 @@ import { Link } from 'react-router-dom';
   export default function ProductCard({product :{id, nombre, categoria, precio, img, stock}}) {
   
     return (
-      <Link to={`/producto/${id}`}>
-      <Card sx={{ maxWidth: 345 }}>
+      
+
+
+      <Card  sx={{ maxWidth: 345 }}>
+      <Link className="cardItem" to={`/producto/${id}`}>
         <CardHeader
         
           
@@ -39,6 +42,7 @@ import { Link } from 'react-router-dom';
           />  
           </Typography>
         </CardContent>
+        </Link>
         <CardActions disableSpacing>
           <IconButton aria-label="add to favorites">
             <FavoriteIcon />
@@ -47,11 +51,11 @@ import { Link } from 'react-router-dom';
             <ShareIcon />
           </IconButton>
          
-          <ItemCount />
+          <ItemCount stock={stock}/>
         </CardActions>
        
       </Card>
-      </Link>
+      
     );
   }
   console.log(CardHeader)
