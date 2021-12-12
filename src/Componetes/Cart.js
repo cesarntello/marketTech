@@ -6,22 +6,10 @@ import {Button, Grid, Box} from '@mui/material'
 
 const Shop = () => {
 const borrarItem = useBorrarItem()
-// const totalCarrito = useTotalCarrito()
+
     const { cart, borrar } = useContext(CartContext)
 
-    // const [totalCarrito, setTotalCarrito] = useState ([]) 
-    
-    // const totalTotal = () => {
-
-    //     setTotalCarrito(  cart.map((producto) =>( producto.precio  * producto.carrito)
-    //     )) 
-    //  }
-
-
-//    const totalCarrito = () => (   cart.map((producto) =>( producto.precio  * producto.carrito)))
-
-    // const totalTotal = () => (totalCarrito.reduce((a + b) => a + b, 0))
-
+   
 
     return (
         <>
