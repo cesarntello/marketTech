@@ -3,8 +3,8 @@ import './App.css';
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import ItemListContainer from './Componetes/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './Componetes/Cards/ItemDetailContainer';
-import Shop from './Componetes/Shop';
-import { CartProvider } from './Componetes/Context/CartContext';
+import Shop from './Componetes/Cart';
+import { CartProvider } from './Context/CartContext';
 
 
 function App() {

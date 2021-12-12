@@ -4,7 +4,7 @@ import ItemDetail from './ItemDetail'
 // import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import { useParams } from 'react-router-dom';
-import { CartContext } from '../Context/CartContext';
+import { CartContext } from '../../Context/CartContext';
 
 
 

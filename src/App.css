@@ -33,3 +33,9 @@
 .terminarCompra {
   text-decoration: none;
 }
+.gridCart {
+  margin: 50px;
+}
+.linkHome {
+  text-decoration: none !important;
+}
