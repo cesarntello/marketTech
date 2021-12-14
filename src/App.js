@@ -5,10 +5,14 @@ import ItemListContainer from './Componetes/ItemListContainer/ItemListContainer'
 import ItemDetailContainer from './Componetes/Cards/ItemDetailContainer';
 import Shop from './Componetes/Cart';
 import { CartProvider } from './Context/CartContext';
-
+import { useEffect } from 'react';
 
 function App() {
  
+
+
+
+
   return (
 
     <CartProvider>
