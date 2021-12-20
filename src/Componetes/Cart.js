@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext} from 'react'
 import { CartContext, useBorrarItem } from '../Context/CartContext'
 import { Link } from 'react-router-dom';
 import {Button, Grid, Box} from '@mui/material'
@@ -6,10 +6,17 @@ import {Button, Grid, Box} from '@mui/material'
 
 const Shop = () => {
 const borrarItem = useBorrarItem()
+const { cart, borrar,total } = useContext(CartContext)
 
-    const { cart, borrar } = useContext(CartContext)
+// const total = () => {
 
+//         const sumaTotal = cart.reduce((prev, curr)=> prev + curr.precio * curr.carrito, 0)
    
+//         return sumaTotal
+   
+//    }
+   
+//    console.log(total())
 
     return (
         <>
@@ -34,11 +41,11 @@ const borrarItem = useBorrarItem()
                             <div key={producto.id}>
                             
                                 <h2>{producto.nombre}</h2>
-                                <h4>${producto.precio}</h4>
+                                <h4>C/U: ${producto.precio}</h4>
                                 <p>Cantidad:{producto.carrito}</p>
                                  <Button variant="contained" onClick={() => borrarItem(producto)}>Eliminar producto</Button>
 
-                                 <p> SubTotal:{producto.precio * producto.carrito}</p>
+                                 <p> SubTotal: ${producto.precio * producto.carrito}</p>
                             </div>
 
                             
@@ -46,11 +53,22 @@ const borrarItem = useBorrarItem()
                     ))}
                    
                     
-                    <p>Total</p>
-                    <button onClick={borrar}>Limpiar Carrito</button>
+                    <h2>Total: ${total()}</h2>
+                    <Button onClick={borrar}>Limpiar Carrito</Button>
                 
                 </div>
             </Grid>
+        </Box>
+        <Box>
+            <form method='POST' >
+                <input type="email" name='email' placeholder='email' >
+
+                </input>
+                        
+                <input type="text" name='nombre' placeholder='Nombre' >
+
+</input>
+            </form>
         </Box>
         </>
     )

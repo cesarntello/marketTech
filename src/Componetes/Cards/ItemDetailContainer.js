@@ -5,6 +5,7 @@ import ItemDetail from './ItemDetail'
 import Container from '@mui/material/Container';
 import { useParams } from 'react-router-dom';
 import { CartContext } from '../../Context/CartContext';
+import { getDoc, getFirestore, doc } from 'firebase/firestore';
 
 
 
@@ -20,18 +21,20 @@ const {addToCart} = useContext(CartContext)
  
 
 useEffect(() => {
-    const getProduct = new Promise ((res) => {
-        setTimeout (() => {
-            res(cardsProduct)
-        }, 1000)
 
-
-    }) 
-
-getProduct.then((result) => {
-    itemId && setProducto(result.find((item) => item.id === itemId)) 
-    
+const db = getFirestore()
+const ref = doc(db, 'product', itemId)
+getDoc(ref).then((snap)=>{
+    setProducto({
+        id: snap.id,
+        ...snap.data(),
+    })
 })
+
+// getProduct.then((result) => {
+//     itemId && setProducto(result.find((item) => item.id === itemId)) 
+    
+// })
 
     
 }, [itemId]);

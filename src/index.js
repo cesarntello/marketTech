@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+// import { cardsProduct } from './Componetes/Cards/items';
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+// import { getFirestore, collection, addDoc } from 'firebase/firestore';
+// import ProductCard from './Componetes/Cards/Card';
+// import { ProductionQuantityLimits } from '@mui/icons-material';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -22,7 +25,10 @@ const firebaseConfig = {
 
 // Initialize Firebase
 initializeApp(firebaseConfig);
+// const db = getFirestore()
+// const ref = collection(db, 'product')
 
+// cardsProduct.map((product) => addDoc(ref, product))
 
 ReactDOM.render(
   <React.StrictMode>
