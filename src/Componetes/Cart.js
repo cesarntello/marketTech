@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import { CartContext, useBorrarItem } from '../Context/CartContext'
 import { Link } from 'react-router-dom';
 import {Button, Grid, Box} from '@mui/material'
@@ -7,6 +7,17 @@ import {Button, Grid, Box} from '@mui/material'
 const Shop = () => {
 const borrarItem = useBorrarItem()
 const { cart, borrar,total } = useContext(CartContext)
+const {form, getForm} = useState({nombre:'', email:''})
+
+const llenarForm = (e) => {
+    const { name, value} = e.target;
+    getForm({
+        ...form,
+        [name]: value,
+    })
+}
+const date = new Date()
+
 
 // const total = () => {
 
@@ -61,13 +72,19 @@ const { cart, borrar,total } = useContext(CartContext)
         </Box>
         <Box>
             <form method='POST' >
-                <input type="email" name='email' placeholder='email' >
+                <input type="email" name='email' placeholder='email'onChange={llenarForm} >
 
                 </input>
                         
-                <input type="text" name='nombre' placeholder='Nombre' >
+                <input type="text" name='nombre' placeholder='Nombre'onChange={llenarForm} >
+                </input>
 
-</input>
+                <button disbled ={
+                    cart?.length === 0 ||
+                    form.nombre === '' ||
+                    form.email === '' }
+                    >
+                    Finalizar compra</button>
             </form>
         </Box>
         </>
