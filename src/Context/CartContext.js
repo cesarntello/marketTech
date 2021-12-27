@@ -1,15 +1,15 @@
-import { addDoc, collection, getDoc, getDocs, getFirestore } from 'firebase/firestore'
+import { addDoc } from 'firebase/firestore'
 import React from 'react'
-import { useState, useContext, useEffect } from 'react'
+import { useState, useContext } from 'react'
 
  export const CartContext = React.createContext()
 
 export function CartProvider({children}) {
 const [cart, setCart] = useState([])
-const db = getFirestore()    
-const ref = collection(db, 'product')
-const refCart = collection(db, 'cartItems')
-
+// const db = getFirestore()    
+// const ref = collection(db, 'product')
+// const refCart = collection(db, 'cartItems')
+const [userEmail, setUserEmail] = useState ('')
 
 
 // useEffect(() => {
@@ -38,7 +38,7 @@ const addToCart = (product, carrito) => {
    else {
        setCart([...cart, {...product, carrito}])
    }
-    addDoc(refCart, product, carrito)
+    addDoc( product, carrito)
     
 }
 
@@ -73,9 +73,11 @@ const borrar = () =>{
     setCart ([])
 }
 
-
+const getUser = (form) => {
+    setUserEmail(form)
+}
 return(
-    <CartContext.Provider value={{addToCart, cart, borrar, borrarItem, total}}>
+    <CartContext.Provider value={{addToCart, cart, borrar, borrarItem, total, getUser, userEmail}}>
        {children}{console.log(cart)}
     </CartContext.Provider>
 )

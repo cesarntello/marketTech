@@ -2,23 +2,40 @@ import React, {useContext, useState} from 'react'
 import { CartContext, useBorrarItem } from '../Context/CartContext'
 import { Link } from 'react-router-dom';
 import {Button, Grid, Box} from '@mui/material'
+import { addDoc, collection, getFirestore } from 'firebase/firestore';
 
 
 const Shop = () => {
 const borrarItem = useBorrarItem()
-const { cart, borrar,total } = useContext(CartContext)
-const {form, getForm} = useState({nombre:'', email:''})
+const { cart, borrar,total, getUser } = useContext(CartContext)
+const {form, getForm} = useState({nombre: '', email: '' })
+const [goTicket, setGoticket] = useState(false)
 
 const llenarForm = (e) => {
     const { name, value} = e.target;
     getForm({
         ...form,
+       
         [name]: value,
     })
 }
+
 const date = new Date()
 
-
+const finalizar = () => {
+    getUser(form)
+    const db = getFirestore()
+    const ref = collection(db, 'ticket')
+    const newOrder = {
+        buyer: form.email,
+        items: cart,
+        date: date,
+        total: total(),
+    }
+    addDoc(ref, newOrder);
+    setGoticket(true);
+    borrar();
+}
 // const total = () => {
 
 //         const sumaTotal = cart.reduce((prev, curr)=> prev + curr.precio * curr.carrito, 0)
@@ -31,7 +48,8 @@ const date = new Date()
 
     return (
         <>
-        
+        {!goTicket ? (
+            <>
         <Box className='gridCart' sx={{ flexGrow: 1 }}>
             <Grid  item xs={8}>
                 <div>
@@ -70,13 +88,13 @@ const date = new Date()
                 </div>
             </Grid>
         </Box>
-        <Box>
-            <form method='POST' >
-                <input type="email" name='email' placeholder='email'onChange={llenarForm} >
+        <div>
+            <form method='POST' onSubmit={finalizar} >
+                <input onChange={llenarForm} type="email" name="email" placeholder="email" >
 
                 </input>
                         
-                <input type="text" name='nombre' placeholder='Nombre'onChange={llenarForm} >
+                <input onChange={llenarForm} type="text" name="nombre" placeholder="Nombre"  >
                 </input>
 
                 <button disbled ={
@@ -86,7 +104,12 @@ const date = new Date()
                     >
                     Finalizar compra</button>
             </form>
-        </Box>
+        </div>
+        </>
+        ) :(
+            <h1>ticket vacio</h1>
+
+        )}
         </>
     )
 }
