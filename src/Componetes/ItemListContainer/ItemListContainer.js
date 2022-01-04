@@ -17,7 +17,7 @@ const ItemListContainer = () => {
          const ref = collection(db, 'product');
 
          getDocs(ref).then((snapShot) => {
-           const prod = snapShot.docs.map((doc) => {
+            const prod = snapShot.docs.map((doc) => {
 
             return {
 

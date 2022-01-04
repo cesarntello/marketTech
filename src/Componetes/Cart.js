@@ -3,6 +3,7 @@ import { CartContext, useBorrarItem } from '../Context/CartContext'
 import { Link } from 'react-router-dom';
 import {Button, Grid, Box} from '@mui/material'
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
+import Order from './Order';
 
 
 const Shop = () => {
@@ -16,9 +17,9 @@ const llenarForm = (e) => {
     getForm({
         ...form,
        
-        [name]: value,
-    })
-}
+        [name]: value
+    });
+};
 
 const date = new Date()
 
@@ -45,7 +46,6 @@ const finalizar = () => {
 //    }
    
 //    console.log(total())
-
     return (
         <>
         {!goTicket ? (
@@ -104,12 +104,13 @@ const finalizar = () => {
                     >
                     Finalizar compra</button>
             </form>
+           
         </div>
         </>
-        ) :(
+        ) :(<>
             <h1>ticket vacio</h1>
-
-        )}
+             <Order/>
+       </> )}
         </>
     )
 }
